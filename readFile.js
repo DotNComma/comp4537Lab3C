@@ -18,7 +18,8 @@ exports.read = class ReadFile {
             {
                 res.writeHead(404, { 'Content-Type': 'text/html' });
                 return res.end(urlData.pathname + " 404 Not Found!");
-            } 
+            }
+            res.writeHead(200, {'Content-Type': 'text/html'})
             res.write(data);
             return res.end();
         });

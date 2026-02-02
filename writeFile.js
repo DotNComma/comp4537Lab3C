@@ -17,7 +17,8 @@ exports.write = class WriteFile {
             {
                 res.writeHead(500, { 'Content-Type': 'text/html' });
                 return res.end("Failed to write to file");
-            } 
+            }
+            res.writeHead(200, {'Content-Type': 'text/html'}) 
             return res.end();
         });
     }
