@@ -1,13 +1,27 @@
-const http = require('http');
-const url = require('url');
-const fs = require('fs');
-const port = process.env.PORT || 8000;
+exports.write = class WriteFile {
+    fs;
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'})
+    constructor()
+    {
+        this.fs = require('fs');
+    }
 
-    const urlData = url.parse(req.url, true);
-    const urlJson = urlData.query;
+    run(req, res)
+    {
+        const url = require('url');
+        const urlData = url.parse(req.url, true);
+        const urlJson = urlData.query;
 
-    fs.appendFileSync("file.txt", urlJson["text"]);
-}).listen(port);
+        this.fs.appendFile("file.txt", urlJson["text"] + "\n", function (err, data) {
+            if (err) 
+            {
+                res.writeHead(500, { 'Content-Type': 'text/html' });
+                return res.end("Failed to write to file");
+            } 
+            return res.end();
+        });
+    }
+}
+
+
+
