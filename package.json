@@ -1,0 +1,14 @@
+{
+  "name": "lab3c",
+  "version": "1.0.0",
+  "main": "readFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "write": "node writeFile.js",
+    "read": "node readFile.js"
+  },
+  "keywords": [],
+  "author": "Carl Manansala",
+  "license": "ISC",
+  "description": ""
+}
